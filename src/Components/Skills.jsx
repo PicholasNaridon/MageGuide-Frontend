@@ -8,7 +8,7 @@ export default class Skills extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/skills`)
+        axios.get(`/api/skills?level=60`)
             .then(res => {
                 console.log(res)
                 const skills = res.data;

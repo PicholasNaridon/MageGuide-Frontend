@@ -1,37 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .wowhead-tooltip {
 	max-width: 500px;
 	overflow: visible !important;
@@ -42,6 +8,7 @@
 }
 
 .wowhead-tooltip table {
+  border: 0 !important;
   border-spacing: 0;
   border-collapse: collapse;
   margin: 0;
@@ -59,9 +26,25 @@
   color: white;
 }
 
-.wowhead-tooltip th b {
-  margin-left: 20px;
+.wowhead-tooltip td th {
+  padding: 0 0 0 4em;
+  text-align: right;
+  font-weight: normal;
 }
+
+.wowhead-tooltip td th, .wowhead-tooltip td td {
+  background: none;
+}
+.wowhead-tooltip th {
+  padding: 3px;
+  vertical-align: top;
+}
+
+.wowhead-tooltip td th{
+  text-align: right;
+  font-weight: normal;
+}
+
 
 .wowhead-tooltip  b {
   color: inherit !important;
@@ -69,9 +52,9 @@
   line-height: 19px;
   font-weight: normal;
   color: white;
+  text-align: right;
 }
 
 .wowhead-tooltip .q0{
   color: #9d9d9d !important;
-  text-align: left;
 }
