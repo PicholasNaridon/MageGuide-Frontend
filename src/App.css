@@ -1,4 +1,9 @@
+body {
+  background-color: #141414;
+}
+
 .wowhead-tooltip {
+  border: 3px solid grey;
 	max-width: 500px;
 	overflow: visible !important;
   z-index: 100000006;
@@ -44,7 +49,6 @@
   text-align: right;
   font-weight: normal;
 }
-
 
 .wowhead-tooltip  b {
   color: inherit !important;

@@ -30,12 +30,12 @@ export default class Skills extends React.Component {
                 <button onClick={this.click}>Click</button>
                 <ul>
                     {this.state.skills.map(skill =>
+                    <div style={{marginLeft: "30%", marginBottom: "10px"}}>
                          <OverlayTrigger key={skill.id} trigger="hover" overlay={<Tooltip id="tooltip-disabled"> <div className="wowhead-tooltip" dangerouslySetInnerHTML={{  __html: skill.toolTip}}></div></Tooltip>}>
-                         <span className="d-inline-block">
-                             <img disabled style={{ pointerEvents: 'none' }} src={skill.jpg}>
-                             </img>
-                         </span>
+                                <img  src={skill.jpg}>
+                                </img>
                          </OverlayTrigger>
+                    </div>
                     )}
                 </ul>
             </div>
