@@ -31,3 +31,47 @@
     transform: rotate(360deg);
   }
 }
+
+.wowhead-tooltip {
+	max-width: 500px;
+	overflow: visible !important;
+  z-index: 100000006;
+  background-color: #181818;
+  padding: .3%;
+  border-radius: 2%;
+}
+
+.wowhead-tooltip table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 0;
+  width: auto;
+}
+
+.wowhead-tooltip .q {
+  color: #ffd100 !important;
+}
+
+.wowhead-tooltip td {
+  text-align: left;
+  font-size: 12;
+  vertical-align: top;
+  color: white;
+}
+
+.wowhead-tooltip th b {
+  margin-left: 20px;
+}
+
+.wowhead-tooltip  b {
+  color: inherit !important;
+  font-size: 20px;
+  line-height: 19px;
+  font-weight: normal;
+  color: white;
+}
+
+.wowhead-tooltip .q0{
+  color: #9d9d9d !important;
+  text-align: left;
+}
