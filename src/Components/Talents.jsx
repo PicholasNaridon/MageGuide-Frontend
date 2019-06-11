@@ -1,14 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import Skill from './Skill'
+import Talent from './Talent'
 
-export default class Skills extends React.Component {
+export default class Talents extends React.Component {
     state = {
         skills: []
     }
 
     componentDidMount() {
-        axios.get(`/api/skills?level=${this.props.level}`)
+        axios.get(`/api/talents`)
             .then(res => {
                 console.log(res)
                 const skills = res.data;
@@ -21,12 +21,10 @@ export default class Skills extends React.Component {
             <div>
                 <ul>
                     {this.state.skills.map(skill =>
-                        <Skill key={skill.id}
-                                id={skill.id}
+                        <Talent key={skill.talentId}
+                                id={skill.talentId}
                                 rank={skill.rank}
                                 jpg={skill.jpg}
-                                cost={skill.cost}
-                                level={skill.level}
                                 tooltip={skill.toolTip} 
                         />
                     )}

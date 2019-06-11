@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Skills from './Components/Skills';
+import Level from './Components/Level';
 
 function App() {
   return (
     <div className="App">
     
-        <Skills />
+        <Level />
     </div>
   );
 }
