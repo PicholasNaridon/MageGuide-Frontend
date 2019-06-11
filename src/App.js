@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import Level from './Components/Level';
+import Main from './Components/Main';
 
 function App() {
   return (
     <div className="App">
-    
-        <Level />
+        <Main />
     </div>
   );
 }
