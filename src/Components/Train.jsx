@@ -9,9 +9,9 @@ class Train extends Component {
             <div>
                 {(function () {
                     switch ( train ) {
-                        case "true":
+                        case true:
                             return <Badge pill variant="success" >Train</Badge>
-                        case "false": 
+                        case false: 
                             return <Badge pill variant="danger" >Don't Train</Badge>
                         case null: 
                             return <Badge pill variant="Warning">Maybe Train</Badge>
