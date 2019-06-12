@@ -4,7 +4,6 @@ import { Badge } from 'react-bootstrap'
 class Train extends Component {
     render() {
         var train = this.props.train
-        console.log("Train Val", train.toString())
         return (
             <div>
                 {(function () {
@@ -14,7 +13,7 @@ class Train extends Component {
                         case false: 
                             return <Badge pill variant="danger" >Don't Train</Badge>
                         case null: 
-                            return <Badge pill variant="Warning">Maybe Train</Badge>
+                            return <Badge pill variant="warning">Maybe Train</Badge>
                         default:
                             return <div style={{color: "white"}}>not working</div>;
                     }

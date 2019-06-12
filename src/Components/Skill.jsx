@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Price from './Price'
 import Train from './Train'
-import { Tooltip, OverlayTrigger, Badge } from 'react-bootstrap'
+import { Tooltip, OverlayTrigger } from 'react-bootstrap'
 
 class componentName extends Component {
     render() {
