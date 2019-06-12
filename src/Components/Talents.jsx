@@ -5,9 +5,6 @@ export default class Talents extends React.Component {
     state = {
         skills: []
     }
-
-
-
     render() {
         return (
             <div>

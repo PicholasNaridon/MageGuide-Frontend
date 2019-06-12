@@ -1,13 +1,27 @@
 import React, { Component } from 'react'
 import Price from './Price'
-import { Tooltip, OverlayTrigger } from 'react-bootstrap'
+import Train from './Train'
+import { Tooltip, OverlayTrigger, Badge } from 'react-bootstrap'
 
 class componentName extends Component {
     render() {
         return (
-            <div style={{margin: "1%"}}>
-                <div style={{ marginLeft: "30%", marginBottom: "10px" }}>
-                    <OverlayTrigger key={this.props.id} trigger="hover" overlay={<Tooltip id="tooltip-disabled"> <div className="wowhead-tooltip" dangerouslySetInnerHTML={{ __html: this.props.tooltip }}></div></Tooltip>}>
+            <div style={{}}>
+                <div style={{ textAlign: "center", margin: "auto 0" }}>
+                    <div style={{ paddingBottom: "10px" }}>
+                       <Train train={this.props.train} />
+                    </div>
+                    <OverlayTrigger
+                        key={this.props.id}
+                        trigger="hover"
+                        overlay={
+                            <Tooltip id="tooltip-disabled">
+                                <div
+                                    className="wowhead-tooltip"
+                                    dangerouslySetInnerHTML={{ __html: this.props.tooltip }}>
+                                </div>
+                            </Tooltip>}
+                    >
                         <img src={this.props.jpg}>
                         </img>
                     </OverlayTrigger>

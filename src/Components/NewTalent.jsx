@@ -28,7 +28,7 @@ class NewTalent extends Component {
         if (this.state.talent) {
             return (
                 <div>
-                    <h1 style={{ color: "#00c0ff" }}>Next Talent to Train</h1>
+                    <h1 style={{ color: "#00c0ff" }}>Next Talent:</h1>
                     <div style={{ marginLeft: "30%", marginBottom: "10px" }}>
                         <OverlayTrigger key={this.state.talent.id} trigger="hover" overlay={<Tooltip id="tooltip-disabled"> <div className="wowhead-tooltip" dangerouslySetInnerHTML={{ __html: this.state.talent.toolTip }}></div></Tooltip>}>
                             <img src={this.state.talent.jpg}>
