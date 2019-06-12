@@ -7,6 +7,7 @@ export default class Skills extends React.Component {
         skills: []
     }
     componentDidUpdate(prevProps) {
+        console.log(prevProps, this.props)
         if (prevProps.level !== this.props.level) {
           this.fetchTrans();
         }
@@ -24,7 +25,7 @@ export default class Skills extends React.Component {
         return (
             <div>
                 <h1 style={{color: "#00c0ff"}}>New Skills:</h1>
-                <ul>
+                <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between"}}>
                     {this.state.skills.map(skill =>
                         <Skill key={skill.id}
                                 id={skill.id}
@@ -33,9 +34,10 @@ export default class Skills extends React.Component {
                                 cost={skill.cost}
                                 level={skill.level}
                                 tooltip={skill.toolTip} 
+                                train={skill.train}
                         />
                     )}
-                </ul>
+                </div>
             </div>
 
         )

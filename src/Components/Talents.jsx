@@ -13,13 +13,13 @@ export default class Talents extends React.Component {
             <div>
                 <h1 style={{ color: "#00c0ff" }}>Current Talents</h1>
 
-                <ul>
+                <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between"}}>
                     {this.props.talents.map(talent =>
                         <Talent key={talent}
                             id={talent}
                         />
                     )}
-                </ul>
+                </div>
             </div>
 
         )

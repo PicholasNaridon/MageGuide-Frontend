@@ -10,6 +10,8 @@ class NewTalent extends Component {
         }
     }
     componentDidUpdate(prevProps) {
+        console.log(prevProps, this.props)
+
         if (prevProps.id !== this.props.id) {
             this.fetchTrans();
         }

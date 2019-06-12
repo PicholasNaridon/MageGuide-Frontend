@@ -20,8 +20,8 @@ class Talent extends Component {
     render () {
         if (this.state.talent){
             return (
-                <div style={{marginLeft: "30%", marginBottom: "10px"}}>
-                        <OverlayTrigger key={this.state.talent.id} trigger="hover" overlay={<Tooltip id="tooltip-disabled"> <div className="wowhead-tooltip" dangerouslySetInnerHTML={{  __html: this.state.talent.toolTip}}></div></Tooltip>}>
+                <div style={{margin: "1%"}}>
+                <OverlayTrigger key={this.state.talent.id} trigger="hover" overlay={<Tooltip id="tooltip-disabled"> <div className="wowhead-tooltip" dangerouslySetInnerHTML={{  __html: this.state.talent.toolTip}}></div></Tooltip>}>
                             <img  src={this.state.talent.jpg}>
                             </img>
                         </OverlayTrigger>
