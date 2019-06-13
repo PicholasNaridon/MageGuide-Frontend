@@ -75,11 +75,12 @@ class Main extends Component {
                         </Nav>
 
                     </Col>
-                    <Col lg>
+                </Row>
+                <Row>
+                <Col xl>
                         <Level level={this.state.level} />
                     </Col>
                 </Row>
-
             </Container >
         )
     }
