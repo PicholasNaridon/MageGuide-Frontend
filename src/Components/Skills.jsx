@@ -7,7 +7,6 @@ export default class Skills extends React.Component {
         skills: []
     }
     componentDidUpdate(prevProps) {
-        console.log(prevProps, this.props)
         if (prevProps.level !== this.props.level) {
           this.fetchTrans();
         }
@@ -15,7 +14,6 @@ export default class Skills extends React.Component {
     fetchTrans() {
         axios.get(`/api/skills?level=${this.props.level}`)
             .then(res => {
-                console.log(res)
                 const skills = res.data;
                 this.setState({ skills });
             })

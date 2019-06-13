@@ -16,7 +16,6 @@ export default class Talents extends React.Component {
         }
     }
     componentDidUpdate(prevProps) {
-        console.log(prevProps, this.props)
         if (prevProps.lvl !== this.props.lvl) {
           this.fetchTrans();
         }
@@ -24,16 +23,13 @@ export default class Talents extends React.Component {
     
 
     fetchTrans = () => {
-        console.log("lvl",this.props.lvl)
         axios.get(`/api/talents/level/${this.props.lvl}`)
             .then(res => {
-                console.log("TALENTS BY LEVEL", res.data)
                 this.setState({ trainedTalents: res.data });
             })
             // maybe make this a const?
         axios.get(`/api/talents`)
             .then(res => {
-                console.log(res)
                 this.setState({ allTalents: res.data });
             })
     }

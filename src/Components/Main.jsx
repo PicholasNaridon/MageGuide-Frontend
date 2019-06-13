@@ -15,11 +15,9 @@ class Main extends Component {
     }
 
     setLevel = (n) => {
-        console.log(n)
         this.setState({
             level: n
         })
-        console.log("STATE", this.state)
     }
     render() {
         return (

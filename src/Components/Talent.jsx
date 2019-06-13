@@ -20,24 +20,32 @@ class Talent extends Component {
     findTalentById = () =>{
         var trainedTalents = this.props.trainedTalents
         var allTalents = this.props.allTalents
-        var ranks = this.props.allRanks
+        var ranks = this.props.allRanks.sort()
 
+        var that = this
+
+        
+        var tal2 = _.find(allTalents, function(t){
+            return t.talentId == ranks[0]
+        })
+        
         ranks.forEach((ele) => {
-            trainedTalents.forEach((ele2) => {
-                if (ele == ele2.talentId){
-                    this.setState({
-                        talent: ele2,
-                        color: true
-                    })
-                }else {
-                  var tal = _.find(allTalents, function(t){
-                        return t.talentId == ranks[0]
-                    })
-                    this.setState({
-                        talent: ele2,
-                    })
-                }
+            var tal1 = _.find(trainedTalents, function(t){
+                return t.talentId == ele
             })
+        
+
+            if (tal1 != null){
+                this.setState({
+                    talent: tal1,
+                    color: true
+                })
+            }else {
+                this.setState({
+                    talent: tal2,
+                })
+            }
+            
         })
 
         
