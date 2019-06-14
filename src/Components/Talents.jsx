@@ -19,18 +19,24 @@ export default class Talents extends React.Component {
         if (prevProps.lvl !== this.props.lvl) {
           this.fetchTrans();
         }
+
       }
     
 
     fetchTrans = () => {
+        var that = this
         axios.get(`/api/talents/level/${this.props.lvl}`)
             .then(res => {
-                this.setState({ trainedTalents: res.data });
+                that.setState((prevState, props) => { 
+                        return {trainedTalents: res.data}
+                    })
             })
             // maybe make this a const?
         axios.get(`/api/talents`)
             .then(res => {
-                this.setState({ allTalents: res.data });
+                that.setState((prevState, props) => { 
+                        return {allTalents: res.data}
+                    })
             })
     }
 
@@ -41,13 +47,13 @@ export default class Talents extends React.Component {
                 <Container >
                     <Row>
                         <Col>
-                            <ArcaneTree trainedTalents={this.state.trainedTalents} allTalents={this.state.allTalents} />
+                            <ArcaneTree lvl={this.props.lvl} trainedTalents={this.state.trainedTalents} allTalents={this.state.allTalents} />
                         </Col>
                         <Col>
-                            <FireTree trainedTalents={this.state.trainedTalents} allTalents={this.state.allTalents} />
+                            <FireTree lvl={this.props.lvl} trainedTalents={this.state.trainedTalents} allTalents={this.state.allTalents} />
                         </Col>
                         <Col>
-                            <FrostTree trainedTalents={this.state.trainedTalents} allTalents={this.state.allTalents} />
+                            <FrostTree lvl={this.props.lvl} trainedTalents={this.state.trainedTalents} allTalents={this.state.allTalents} />
                         </Col>
                     </Row>
                 </Container>

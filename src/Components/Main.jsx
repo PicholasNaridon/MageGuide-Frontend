@@ -12,11 +12,12 @@ class Main extends Component {
         this.state = {
             level: 1
         }
+        this.setLevel = this.setLevel.bind(this)
     }
 
     setLevel = (n) => {
-        this.setState({
-            level: n
+        this.setState((prevState, props) => { 
+            return {level: n}
         })
     }
     render() {
@@ -28,9 +29,9 @@ class Main extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col xs>
                         <Nav>
-                            <ListGroup vertical>
+                            <ListGroup >
                                 {LEVELS20.map(n =>
                                     <ListGroup.Item
                                         action
@@ -43,7 +44,7 @@ class Main extends Component {
                                     </ListGroup.Item>
                                 )}
                             </ListGroup>
-                            <ListGroup vertical>
+                            <ListGroup >
                                 {LEVELS40.map(n =>
                                     <ListGroup.Item
                                         action
@@ -56,7 +57,7 @@ class Main extends Component {
                                     </ListGroup.Item>
                                 )}
                             </ListGroup>
-                            <ListGroup vertical>
+                            <ListGroup >
                                 {LEVELS60.map(n =>
                                     <ListGroup.Item
                                         action
@@ -71,11 +72,8 @@ class Main extends Component {
 
                             </ListGroup>
                         </Nav>
-
                     </Col>
-                </Row>
-                <Row>
-                <Col xl>
+                    <Col xl>
                         <Level level={this.state.level} />
                     </Col>
                 </Row>

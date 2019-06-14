@@ -37,7 +37,7 @@ class componentName extends Component {
 
                 <Skills level={this.props.level} />
 
-                <Talents lvl={this.state.level.level} />
+                <Talents lvl={this.props.level} />
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Tooltip, OverlayTrigger} from 'react-bootstrap'
 import _ from 'lodash';
+import { npost } from 'q';
 
 
 class Talent extends Component {
@@ -10,43 +11,87 @@ class Talent extends Component {
             talent: null,
             color: false
         }
+        this.findTalentById = this.findTalentById.bind(this)
     }
     componentDidUpdate(prevProps) {
-        if (prevProps.trainedTalents !== this.props.trainedTalents) {
-            this.findTalentById();
+        if (prevProps.lvl !== this.props.lvl) {
+            var that = this
+            var trainedTalents = this.props.trainedTalents
+            var allTalents = this.props.allTalents
+            var ranks = this.props.allRanks.sort()
+
+            var i;
+            var list = []
+            for (i = 0; i < ranks.length; i++) { 
+                var talent = _.find(trainedTalents, { talentId: ranks[i]})
+                if (talent != undefined){
+                    list.push(talent)
+                }
+            }
+            if (list.length >= 1){
+                var setTalent = list[list.length - 1]
+                that.setState((prevState, props) => { 
+                    return {talent: setTalent, color: true}
+                }, () => console.log("state"))
+
+            }else {
+                var notTrained = _.find(allTalents, function(t) { return t.talentId === that.props.baseId})
+                that.setState((prevState, props) => { 
+                    return {talent: notTrained}
+                }, () => console.log("state"))
+            }
         }
     }
 
-    findTalentById = () =>{
+    findTalentById(){
+        var that = this
         var trainedTalents = this.props.trainedTalents
         var allTalents = this.props.allTalents
         var ranks = this.props.allRanks.sort()
 
-        var that = this
-
-        
-        var tal2 = _.find(allTalents, function(t){
-            return t.talentId == ranks[0]
-        })
-        
-        ranks.forEach((ele) => {
-            var tal1 = _.find(trainedTalents, function(t){
-                return t.talentId == ele
-            })
-        
-
-            if (tal1 != null){
-                this.setState({
-                    talent: tal1,
-                    color: true
-                })
-            }else {
-                this.setState({
-                    talent: tal2,
-                })
+        var i;
+        var list = []
+        for (i = 0; i < ranks.length; i++) { 
+            var talent = _.find(trainedTalents, { talentId: ranks[i]})
+            if (talent != undefined){
+                list.push(talent)
             }
+        }
+        if (list.length >= 1){
+            var setTalent = list[list.length - 1]
+            that.setState((prevState, props) => { 
+                return {talent: setTalent, color: true}
+            }, () => console.log("state"))
+
+        }else {
+            var notTrained = _.find(allTalents, function(t) { return t.talentId === that.props.baseId})
+            that.setState((prevState, props) => { 
+                return {talent: notTrained}
+            }, () => console.log("state"))
+        }
+        
+        // var tal2 = _.find(allTalents, function(t){
+        //     return t.talentId == ranks[0]
+        // })
+        
+        // ranks.forEach((ele) => {
+        //     var tal1 = _.find(trainedTalents, function(t){
+        //         return t.talentId == ele
+        //     })
+        
+
+        //     if (tal1 != null){
+        //         this.setState({
+        //             talent: tal1,
+        //             color: true
+        //         })
+        //     }else {
+        //         this.setState({
+        //             talent: tal2,
+        //         })
+        //     }
             
-        })
+        // })
 
         
     }
