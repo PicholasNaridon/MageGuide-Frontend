@@ -12,7 +12,7 @@ export default class Skills extends React.Component {
         }
       }
     fetchTrans() {
-        axios.get(`/api/skills?level=${this.props.level}`)
+        axios.get(`/api/skills/level/${this.props.level}`)
             .then(res => {
                 const skills = res.data;
                 this.setState({ skills });
