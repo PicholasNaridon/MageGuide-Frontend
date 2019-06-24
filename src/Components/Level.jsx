@@ -20,7 +20,7 @@ class componentName extends Component {
         }
     }
     fetchTrans = () => {
-        axios.get(`/api/levels?level=${this.props.level}`)
+        axios.get(`/api/levels/${this.props.level}`)
             .then(res => {
                 this.setState({
                     level: res.data
