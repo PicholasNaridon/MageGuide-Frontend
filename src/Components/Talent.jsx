@@ -1,112 +1,76 @@
 import React, { Component } from 'react'
-import {Tooltip, OverlayTrigger} from 'react-bootstrap'
+import { Tooltip, OverlayTrigger } from 'react-bootstrap'
 import _ from 'lodash';
-import { npost } from 'q';
+import axios from 'axios'
 
 
 class Talent extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state ={
+        this.state = {
+            talentId: this.props.baseId,
             talent: null,
-            color: false
+            color: null
         }
-        this.findTalentById = this.findTalentById.bind(this)
+        this.getTalent = this.getTalent.bind(this)
+        this.checkTalentsVsLevl = this.checkTalentsVsLevl.bind(this)
     }
     componentDidUpdate(prevProps) {
         if (prevProps.lvl !== this.props.lvl) {
-            var that = this
-            var trainedTalents = this.props.trainedTalents
-            var allTalents = this.props.allTalents
-            var ranks = this.props.allRanks.sort()
+            this.checkTalentsVsLevl(this.props.lvl)
 
-            var i;
-            var list = []
-            for (i = 0; i < ranks.length; i++) { 
-                var talent = _.find(trainedTalents, { talentId: ranks[i]})
-                if (talent != undefined){
-                    list.push(talent)
+        }
+    }
+    componentDidMount() {
+        this.checkTalentsVsLevl()
+
+    }
+
+    getTalent() {
+        axios.get(`/api/talents/${this.state.talentId}`)
+            .then(res => {
+                const talent = res.data[0];
+                this.setState({ talent: talent });
+            })
+    }
+
+    checkTalentsVsLevl(lvl) {
+        var talents = this.props.idsWithLevel
+
+        if (talents != null) {
+            Object.entries(talents).forEach(entry => {
+
+                let key = entry[0];
+                let value = entry[1];
+                console.log(parseInt(key), value, lvl)
+                if (lvl >= parseInt(key) ) {
+                    this.setState({
+                        talentId: value,
+                        color: true
+                    })
+                }else {
+                    this.setState({
+                        talentId: this.props.baseId,
+                        color: false
+                    })
                 }
-            }
-            if (list.length >= 1){
-                var setTalent = list[list.length - 1]
-                that.setState((prevState, props) => { 
-                    return {talent: setTalent, color: true}
-                }, () => console.log("state"))
-
-            }else {
-                var notTrained = _.find(allTalents, function(t) { return t.talentId === that.props.baseId})
-                that.setState((prevState, props) => { 
-                    return {talent: notTrained}
-                }, () => console.log("state"))
-            }
+    
+            });
         }
+        this.getTalent()
     }
 
-    findTalentById(){
-        var that = this
-        var trainedTalents = this.props.trainedTalents
-        var allTalents = this.props.allTalents
-        var ranks = this.props.allRanks.sort()
-
-        var i;
-        var list = []
-        for (i = 0; i < ranks.length; i++) { 
-            var talent = _.find(trainedTalents, { talentId: ranks[i]})
-            if (talent != undefined){
-                list.push(talent)
-            }
-        }
-        if (list.length >= 1){
-            var setTalent = list[list.length - 1]
-            that.setState((prevState, props) => { 
-                return {talent: setTalent, color: true}
-            }, () => console.log("state"))
-
-        }else {
-            var notTrained = _.find(allTalents, function(t) { return t.talentId === that.props.baseId})
-            that.setState((prevState, props) => { 
-                return {talent: notTrained}
-            }, () => console.log("state"))
-        }
-        
-        // var tal2 = _.find(allTalents, function(t){
-        //     return t.talentId == ranks[0]
-        // })
-        
-        // ranks.forEach((ele) => {
-        //     var tal1 = _.find(trainedTalents, function(t){
-        //         return t.talentId == ele
-        //     })
-        
-
-        //     if (tal1 != null){
-        //         this.setState({
-        //             talent: tal1,
-        //             color: true
-        //         })
-        //     }else {
-        //         this.setState({
-        //             talent: tal2,
-        //         })
-        //     }
-            
-        // })
-
-        
-    }
-
-    render () {
-        if (this.state.talent){
+    render() {
+        if (this.state.talent) {
             return (
-                <div style={{margin: "1%"}}>
-                        <OverlayTrigger key={this.state.talent.id} trigger="hover" overlay={<Tooltip id="tooltip-disabled"> <div className="wowhead-tooltip" dangerouslySetInnerHTML={{  __html: this.state.talent.toolTip}}></div></Tooltip>}>
-                            <img style={this.state.color ?  null: {filter: "grayscale(100%)"}} src={this.state.talent.jpg}>
-                            </img>
-                        </OverlayTrigger>
+                <div style={{ margin: "1%" }}>
+                    <OverlayTrigger key={this.state.talent.id} trigger="hover" overlay={<Tooltip id="tooltip-disabled"> <div className="wowhead-tooltip" dangerouslySetInnerHTML={{ __html: this.state.talent.toolTip }}></div></Tooltip>}>
+                        <img style={this.state.color ? null : { filter: "grayscale(100%)" }} src={this.state.talent.jpg}>
+                        </img>
+                    </OverlayTrigger>
                 </div>
             )
-        }else{
+        } else {
             return <div />
         }
     }
