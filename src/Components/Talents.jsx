@@ -15,30 +15,6 @@ export default class Talents extends React.Component {
             allTalents: []
         }
     }
-    componentDidUpdate(prevProps) {
-        if (prevProps.lvl !== this.props.lvl) {
-          this.fetchTrans();
-        }
-
-      }
-    
-
-    fetchTrans = () => {
-        var that = this
-        axios.get(`/api/talents/level/${this.props.lvl}`)
-            .then(res => {
-                that.setState((prevState, props) => { 
-                        return {trainedTalents: res.data}
-                    })
-            })
-            // maybe make this a const?
-        axios.get(`/api/talents`)
-            .then(res => {
-                that.setState((prevState, props) => { 
-                        return {allTalents: res.data}
-                    })
-            })
-    }
 
     render() {
         return (
@@ -47,13 +23,13 @@ export default class Talents extends React.Component {
                 <Container >
                     <Row>
                         <Col>
-                            <ArcaneTree lvl={this.props.lvl} trainedTalents={this.state.trainedTalents} allTalents={this.state.allTalents} />
+                            <ArcaneTree lvl={this.props.lvl}  />
                         </Col>
                         <Col>
-                            <FireTree lvl={this.props.lvl} trainedTalents={this.state.trainedTalents} allTalents={this.state.allTalents} />
+                            <FireTree lvl={this.props.lvl}  />
                         </Col>
                         <Col>
-                            <FrostTree lvl={this.props.lvl} trainedTalents={this.state.trainedTalents} allTalents={this.state.allTalents} />
+                            <FrostTree lvl={this.props.lvl}  />
                         </Col>
                     </Row>
                 </Container>
