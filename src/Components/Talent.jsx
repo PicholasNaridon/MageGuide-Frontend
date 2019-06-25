@@ -26,38 +26,32 @@ class Talent extends Component {
 
     }
 
-    getTalent() {
-        axios.get(`/api/talents/${this.state.talentId}`)
+    getTalent(id, color) {
+        axios.get(`/api/talents/${id}`)
             .then(res => {
                 const talent = res.data[0];
-                this.setState({ talent: talent });
+                this.setState({ talent: talent, color: color });
             })
     }
 
     checkTalentsVsLevl(lvl) {
         var talents = this.props.idsWithLevel
+        var maxId = this.props.baseId
 
         if (talents != null) {
+            console.log(Object.entries(talents))
             Object.entries(talents).forEach(entry => {
-
-                let key = entry[0];
+                let key = parseInt(entry[0]);
                 let value = entry[1];
-                console.log(parseInt(key), value, lvl)
-                if (lvl >= parseInt(key) ) {
-                    this.setState({
-                        talentId: value,
-                        color: true
-                    })
-                }else {
-                    this.setState({
-                        talentId: this.props.baseId,
-                        color: false
-                    })
+                console.log(key, value, lvl)
+                if (lvl >= key ) {
+                    maxId = key
+                    this.getTalent(value, true)
                 }
-    
             });
         }
-        this.getTalent()
+        if (maxId == this.props.baseId)
+        this.getTalent(this.state.talentId, false)
     }
 
     render() {
