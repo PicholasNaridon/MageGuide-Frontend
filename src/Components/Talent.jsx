@@ -44,7 +44,7 @@ class Talent extends Component {
         if (this.state.talent) {
             return (
                 <div style={{width: "10%", boxSizing: "border-box" }}>
-                    <OverlayTrigger key={this.state.talent.id} trigger="hover" overlay={<Tooltip id="tooltip-disabled"> <div className="wowhead-tooltip" dangerouslySetInnerHTML={{ __html: this.state.talent.toolTip }}></div></Tooltip>}>
+                    <OverlayTrigger key={this.state.talent.id} trigger="click" overlay={<Tooltip > <div className="wowhead-tooltip" dangerouslySetInnerHTML={{ __html: this.state.talent.toolTip }}></div></Tooltip>}>
                         <img style={this.state.color ? null : { filter: "grayscale(100%)" }} src={this.state.talent.jpg}>
                         </img>
                     </OverlayTrigger>
