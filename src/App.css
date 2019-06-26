@@ -1,5 +1,7 @@
 body {
-  background-color: #141414;
+  background-image: url("./Assets/maxresdefault-2.jpg");
+  background-repeat: no-repeat, repeat;
+
 }
 
 .wowhead-tooltip {
