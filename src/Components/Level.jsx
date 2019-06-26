@@ -22,8 +22,10 @@ class componentName extends Component {
     fetchTrans = () => {
         axios.get(`/api/levels/${this.props.level}`)
             .then(res => {
+                console.log(res)
                 this.setState({
-                    level: res.data
+                    level: res.data,
+                    newTalent: res.data.newTalent
                 })
             })
     }
@@ -34,10 +36,8 @@ class componentName extends Component {
                 <h1 style={{ color: "#ffd100" }}>Current Level {this.state.level.level}</h1>
                 <h1 style={{ color: "#ffd100" }}>Return to trainer: {this.state.level.returnToTrainer ? "Yes" : "No"}</h1>
                 <NewTalent id={this.state.level.newTalent} />
-
-                <Skills level={this.props.level} />
-
                 <Talents lvl={this.props.level} />
+                <Skills level={this.props.level} />
             </div>
         )
     }
