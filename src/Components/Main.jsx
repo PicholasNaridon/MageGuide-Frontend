@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { Button, ListGroup, Container, Row, Col, Nav } from 'react-bootstrap'
+import { Button, Container, Row, Col, ProgressBar } from 'react-bootstrap'
 import Level from './Level'
 
-const LEVELS20 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-const LEVELS40 = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
-const LEVELS60 = [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60];
 
 class Main extends Component {
     constructor(props) {
@@ -29,53 +26,17 @@ class Main extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs>
-                        <Nav>
-                            <ListGroup >
-                                {LEVELS20.map(n =>
-                                    <ListGroup.Item
-                                        action
-                                        variant={n == 10 ? "success" : "primary"}
-                                        key={n}
-                                        level={n}
-                                        onClick={this.setLevel.bind(this, n)}
-                                    >
-                                        Level {n}
-                                    </ListGroup.Item>
-                                )}
-                            </ListGroup>
-                            <ListGroup >
-                                {LEVELS40.map(n =>
-                                    <ListGroup.Item
-                                        action
-                                        variant={n == 40 || n == 30 ? "success" : "primary"}
-                                        key={n}
-                                        level={n}
-                                        onClick={this.setLevel.bind(this, n)}
-                                    >
-                                        Level {n}
-                                    </ListGroup.Item>
-                                )}
-                            </ListGroup>
-                            <ListGroup >
-                                {LEVELS60.map(n =>
-                                    <ListGroup.Item
-                                        action
-                                        variant={n == 60 ? "warning" : "primary"}
-                                        key={n}
-                                        level={n}
-                                        onClick={this.setLevel.bind(this, n)}
-                                    >
-                                        Level {n}
-                                    </ListGroup.Item>
-                                )}
+                    <Col>
+                        <Button onClick={this.setLevel.bind(this,  this.state.level + 1)}> Up </Button>
+                        <Button onClick={this.setLevel.bind(this,  this.state.level - 1)}> Down </Button>
+                        <ProgressBar now={this.state.level} max={60} min={1} striped label={`${this.state.level}`} />;
 
-                            </ListGroup>
-                        </Nav>
                     </Col>
                     <Col xl>
                         <Level level={this.state.level} />
                     </Col>
+                </Row>
+                <Row>
                 </Row>
             </Container >
         )
