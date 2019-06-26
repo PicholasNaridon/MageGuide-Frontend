@@ -3,6 +3,7 @@ import FrostTree from './FrostTree';
 import ArcaneTree from './ArcaneTree';
 import FireTree from './FireTree';
 import axios from 'axios'
+import RevampedTalents from './RevampedTalents'
 import { Row, Container, Col } from 'react-bootstrap'
 
 
@@ -22,15 +23,7 @@ export default class Talents extends React.Component {
                 <h1 style={{ color: "#00c0ff" }}>Current Talents</h1>
                 <Container >
                     <Row>
-                        <Col>
-                            <ArcaneTree lvl={this.props.lvl}  />
-                        </Col>
-                        <Col>
-                            <FireTree lvl={this.props.lvl}  />
-                        </Col>
-                        <Col>
-                            <FrostTree lvl={this.props.lvl}  />
-                        </Col>
+                        <RevampedTalents lvl={this.props.lvl} />
                     </Row>
                 </Container>
 
