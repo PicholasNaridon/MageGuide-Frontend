@@ -10,7 +10,6 @@ class NewTalent extends Component {
         }
     }
     componentDidUpdate(prevProps) {
-
         if (prevProps.id !== this.props.id) {
             this.fetchTrans();
         }
@@ -18,7 +17,7 @@ class NewTalent extends Component {
     fetchTrans() {
         axios.get(`/api/talents/${this.props.id}`)
             .then(res => {
-                this.setState({ talent: res.data });
+                this.setState({ talent: res.data[0] });
             })
     }
 
