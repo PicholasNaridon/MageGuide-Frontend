@@ -16,7 +16,7 @@ class Talent extends Component {
     }
     componentDidUpdate(prevProps) {
         if (prevProps.lvl !== this.props.lvl) {
-            this.checkTalentsVsLevl(this.props.lvl)
+            this.checkTalentsVsLevl()
 
         }
     }
@@ -31,10 +31,13 @@ class Talent extends Component {
     }
 
     checkTalentsVsLevl() {
-
         if (this.props.talentLvl <= this.props.lvl){
             this.setState({
                 color: true
+            })
+        }else {
+            this.setState({
+                color: false
             })
         }
         
@@ -44,7 +47,7 @@ class Talent extends Component {
         if (this.state.talent) {
             return (
                 <div style={{width: "10%", boxSizing: "border-box" }}>
-                    <OverlayTrigger key={this.state.talent.id} trigger="click" overlay={<Tooltip > <div className="wowhead-tooltip" dangerouslySetInnerHTML={{ __html: this.state.talent.toolTip }}></div></Tooltip>}>
+                    <OverlayTrigger key={this.state.talent.id} trigger="hover" overlay={<Tooltip > <div className="wowhead-tooltip" dangerouslySetInnerHTML={{ __html: this.state.talent.toolTip }}></div></Tooltip>}>
                         <img style={this.state.color ? null : { filter: "grayscale(100%)" }} src={this.state.talent.jpg}>
                         </img>
                     </OverlayTrigger>
