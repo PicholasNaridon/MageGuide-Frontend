@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Container, Button, Row, Col } from 'react-bootstrap'
 import Skills from './Skills'
 import NewTalent from './NewTalent'
 import Talents from './Talents';
@@ -32,13 +33,25 @@ class componentName extends Component {
 
     render() {
         return (
-            <div>
-                <h1 style={{ color: "#ffd100" }}>Current Level {this.state.level.level}</h1>
-                <h1 style={{ color: "#ffd100" }}>Return to trainer: {this.state.level.returnToTrainer ? "Yes" : "No"}</h1>
-                <NewTalent id={this.state.level.newTalent} />
-                <Talents lvl={this.props.level} />
-                <Skills level={this.props.level} />
-            </div>
+            <Container>
+                <Row>
+                    <Col>
+                        <h1 style={{ color: "#ffd100" }}>Current Level {this.state.level.level}</h1>
+
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Skills level={this.props.level} />
+                        <h1 style={{ color: "#ffd100" }}>Return to trainer: {this.state.level.returnToTrainer ? "Yes" : "No"}</h1>
+                    </Col>
+                    <Col>
+                        <Talents lvl={this.props.level} />
+                    </Col>
+                </Row>
+
+
+            </Container>
         )
     }
 }
