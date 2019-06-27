@@ -32,14 +32,13 @@ class Main extends Component {
                     <Col>
                         <Button onClick={this.setLevel.bind(this, this.state.level + 1)}> Up </Button>
                         <Button onClick={this.setLevel.bind(this, this.state.level - 1)}> Down </Button>
-                        <ProgressBar now={this.state.level} max={60} min={1} striped label={`${this.state.level}`} />
-
-                    </Col>
-                    <Col xl>
-                        <Level level={this.state.level} />
+                        <ProgressBar now={this.state.level} max={60} min={1} striped label={`${this.state.level}`} />                    
                     </Col>
                 </Row>
                 <Row>
+                    <Col xl>
+                        <Level level={this.state.level} />
+                    </Col>
                 </Row>
             </Container >
         )
