@@ -24,6 +24,7 @@ class Talent extends Component {
         axios.get(`/api/talents/${this.props.baseId}`)
         .then(res => {
             const talent = res.data[0];
+            console.log(talent)
             this.setState({ talent: talent});
         })
         this.checkTalentsVsLevl()
@@ -48,8 +49,12 @@ class Talent extends Component {
             return (
                 <div style={{width: "10%", boxSizing: "border-box" }}>
                     <OverlayTrigger key={this.state.talent.id} trigger="hover" overlay={<Tooltip > <div className="wowhead-tooltip" dangerouslySetInnerHTML={{ __html: this.state.talent.toolTip }}></div></Tooltip>}>
+                        <div>
                         <img style={this.state.color ? null : { filter: "grayscale(100%)" }} src={this.state.talent.jpg}>
                         </img>
+                        <div style={{color: "rgb(255, 209, 0)"}}>{this.props.talentLvl}</div>
+
+                        </div>
                     </OverlayTrigger>
                 </div>
             )
