@@ -1,8 +1,4 @@
 import React from 'react';
-import FrostTree from './FrostTree';
-import ArcaneTree from './ArcaneTree';
-import FireTree from './FireTree';
-import axios from 'axios'
 import RevampedTalents from './RevampedTalents'
 import { Row, Container, Col } from 'react-bootstrap'
 
