@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Container, Button, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import Skills from './Skills'
-import NewTalent from './NewTalent'
 import Talents from './Talents';
 import axios from 'axios';
 
@@ -11,7 +10,6 @@ class componentName extends Component {
         this.state = {
             level: {
                 level: 1,
-                talents: []
             }
         }
     }
@@ -37,7 +35,6 @@ class componentName extends Component {
                 <Row>
                     <Col>
                         <h1 style={{ color: "#ffd100" }}>Current Level {this.state.level.level}</h1>
-
                     </Col>
                 </Row>
                 <Row>
