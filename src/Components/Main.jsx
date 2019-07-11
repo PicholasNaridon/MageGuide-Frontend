@@ -29,18 +29,24 @@ class Main extends Component {
                         <h1 style={{ color: "Gold" }}>Classic Mage Guide</h1>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <Button onClick={this.setLevel.bind(this, this.state.level + 1)}> Up </Button>
-                        <Button onClick={this.setLevel.bind(this, this.state.level - 1)}> Down </Button>
-                        <ProgressBar now={this.state.level} max={60} min={1} striped label={`${this.state.level}`} />                    
-                    </Col>
-                </Row>
-                <Row>
+                <Row style={{ height: "700px" }}>
                     <Col xl>
                         <Level level={this.state.level} />
                     </Col>
                 </Row>
+                <Row>
+                    <Col>
+                        <div style={{marginTop: "5%"}}>
+                            {this.state.level >= 2 ?
+                                <Button style={{margin: "10px"}} onClick={this.setLevel.bind(this, this.state.level - 1)}> Previous Level </Button> : <div></div>
+                            }
+                            {this.state.level <= 59 ?
+                                <Button style={{margin: "10px"}} onClick={this.setLevel.bind(this, this.state.level + 1)}> Next Level </Button> : <div></div>
+                            }
+                        </div>
+                    </Col>
+                </Row>
+
             </Container >
         )
     }
