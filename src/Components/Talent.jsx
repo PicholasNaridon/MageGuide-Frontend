@@ -24,7 +24,6 @@ class Talent extends Component {
         axios.get(`/api/talents/${this.props.baseId}`)
         .then(res => {
             const talent = res.data[0];
-            console.log(talent)
             this.setState({ talent: talent});
         })
         this.checkTalentsVsLevl()
