@@ -8,10 +8,12 @@ class Item extends Component {
         this.state = {
             item: {}
         }
+        console.log(this.props)
+
     }
 
     componentDidMount() {
-        axios.get(`/api/items/7513`)
+        axios.get(`/api/items/${this.props.id}`)
             .then(res => {
                 console.log(res)
                 this.setState({
@@ -26,7 +28,7 @@ class Item extends Component {
                 <div style={{ width: "60px", height: "60px", margin: "auto", boxSizing: "border-box"}} >
                 <OverlayTrigger
                     key={this.state.item.id}
-                    trigger="click"
+                    trigger="hover"
                     overlay={
                         <Tooltip id="tooltip-disabled">
                             <div
