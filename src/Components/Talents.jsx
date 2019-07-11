@@ -16,7 +16,7 @@ export default class Talents extends React.Component {
     render() {
         return (
             <div>
-                <h1 style={{ color: "#00c0ff" }}>Current Talents</h1>
+                <h1 style={{ color: "#ffd100" }}>Talents</h1>
                 <Container >
                     <Row>
                         <RevampedTalents lvl={this.props.lvl} />
