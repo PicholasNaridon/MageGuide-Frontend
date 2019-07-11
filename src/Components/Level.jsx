@@ -45,10 +45,10 @@ class componentName extends Component {
                     </Row>
                     <Row style={{height: "200px"}}>
                         <Col>
-                            <p style={{color: "white"}}>{this.state.levelInfo.notes}</p>
-                            <Items items={this.state.levelInfo.items ? this.state.levelInfo.items : []} />
                             <p style={{color: "white"}}>Best damage per mana this level:</p>
                             <TopDPM skill={this.state.levelInfo.bestDPM} />
+                            <p style={{color: "white"}}>{this.state.levelInfo.notes}</p>
+                            <Items items={this.state.levelInfo.items ? this.state.levelInfo.items : []} />
                         </Col>
 
                     </Row>
