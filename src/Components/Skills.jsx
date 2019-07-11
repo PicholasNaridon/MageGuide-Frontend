@@ -22,7 +22,6 @@ export default class Skills extends React.Component {
     render() {
         return (
             <div>
-                <h1 style={{color: "#00c0ff"}}>New Skills:</h1>
                 <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-evenly"}}>
                     {this.state.skills.map(skill =>
                         <Skill key={skill.id}
