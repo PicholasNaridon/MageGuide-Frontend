@@ -15,7 +15,7 @@ class Train extends Component {
                         case null: 
                             return <Badge pill variant="warning">Maybe Train</Badge>
                         default:
-                            return <div style={{color: "white"}}>not working</div>;
+                            return <div style={{color: "white"}}></div>;
                     }
                 })()}
             </div>
