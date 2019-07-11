@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Container, Button, Row, Col, ProgressBar } from 'react-bootstrap'
-
 import Level from './Level'
 
 
@@ -18,6 +17,8 @@ class Main extends Component {
             return { level: n }
         })
     }
+
+
     render() {
         return (
             <Container style={{
