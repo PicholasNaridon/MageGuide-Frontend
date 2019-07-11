@@ -13,17 +13,17 @@ class TopDPM extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.skill !== this.props.skill) {
-          this.fetchTrans();
+            this.fetchTrans();
         }
-      }
-      
+    }
+
     fetchTrans() {
         axios.get(`/api/skills/${this.props.skill}`)
-        .then(res => {
-            this.setState({
-                skill: res.data,
+            .then(res => {
+                this.setState({
+                    skill: res.data,
+                })
             })
-        })
     }
 
     componentDidMount() {
@@ -50,8 +50,8 @@ class TopDPM extends Component {
                                 </div>
                             </Tooltip>}
                     >
-                            <img src={this.state.skill.jpg} ></img> 
-                        
+                        <img src={this.state.skill.jpg} ></img>
+
                     </OverlayTrigger>
                 </div>
             )
