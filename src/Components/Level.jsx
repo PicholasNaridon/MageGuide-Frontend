@@ -4,6 +4,7 @@ import Skills from './Skills'
 import Talents from './Talents';
 import axios from 'axios';
 import Items from './Items';
+import TopDPM from './TopDPM';
 
 class componentName extends Component {
     constructor(props) {
@@ -39,14 +40,15 @@ class componentName extends Component {
                 <Container>
                     <Row>
                         <Col>
-                            <h1 style={{ color: "#ffd100" }}>Current Level {this.state.levelInfo.level}</h1>
+                            <h1 style={{ color: "#ffd100" }}>Level {this.state.levelInfo.level}</h1>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row style={{height: "200px"}}>
                         <Col>
                             <p style={{color: "white"}}>{this.state.levelInfo.notes}</p>
-
                             <Items items={this.state.levelInfo.items ? this.state.levelInfo.items : []} />
+                            <p style={{color: "white"}}>Best damage per mana this level:</p>
+                            <TopDPM skill={this.state.levelInfo.bestDPM} />
                         </Col>
 
                     </Row>
